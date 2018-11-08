@@ -15,7 +15,7 @@
       text-align: center;
 
       span {
-        color:#bbcde5;
+        color:#639fab;
       }
     }
   }
