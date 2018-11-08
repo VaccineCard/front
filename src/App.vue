@@ -7,7 +7,7 @@
 <style lang="scss">
 @font-face {
   font-family: KoHo;
-  src: url(assets/fonts/KoHo/KoHo-Bold.ttf);
+  src: url(assets/fonts/KoHo/KoHo-Medium.ttf);
   font-weight: bolder;
 }
 
