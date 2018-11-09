@@ -19,7 +19,7 @@
           <div class="grid-x">
             <div class="cell auto"></div>
             <div class="cell small-3">
-              <p class="username"> Olá, Viccine user! </p>
+              <p class="username"> Olá, Vaccine user! </p>
               <div class="top-image"></div>
               <i class="fa fa-angle-down"></i>
             </div>
