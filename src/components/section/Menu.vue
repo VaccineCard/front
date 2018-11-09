@@ -9,7 +9,6 @@
 </template>
 <style lang="scss" scoped>
   ul {
-
     width: 100%;
     margin: 0;
     padding: 0;
@@ -30,6 +29,11 @@
       }
     }
   }
+
+  .router-link-active {
+    background-color: #639fab !important;
+    border-left: 2px solid #111111;
+  }
 </style>
 <script>
 export default {
@@ -37,7 +41,7 @@ export default {
   data: function () {
     return {
       menuItem: [
-        { role: 'Dashboard', link: 'dashboard' },
+        { role: 'Dashboard', link: 'dash' },
         { role: 'Pesquisar Vacina', link: 'search' },
         { role: 'Família', link: 'family' },
         { role: 'Doutores', link: 'doctors' },
