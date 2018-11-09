@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Account from './views/Account.vue'
+import Dashboard from './components/Dashboard.vue'
 
 Vue.use(Router)
 
@@ -18,7 +19,35 @@ export default new Router({
     {
       path: '/',
       name: 'account',
-      component: Account
+      component: Account,
+      redirect: { name: 'dash' },
+      children: [
+        {
+          name: 'dash',
+          path: 'dashboard',
+          component: Dashboard
+        },
+        {
+          name: 'search',
+          path: 'search',
+          component: () => import('./components/Search.vue')
+        },
+        {
+          name: 'family',
+          path: 'family',
+          component: () => import('./components/Family.vue')
+        },
+        {
+          name: 'doctors',
+          path: 'doctors',
+          component: () => import('./components/Doctors.vue')
+        },
+        {
+          name: 'setting',
+          path: 'setting',
+          component: () => import('./components/Setting.vue')
+        }
+      ]
     }
   ]
 })
