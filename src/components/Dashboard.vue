@@ -107,60 +107,59 @@ export default {
 </script>
 
 <style lang="scss">
-  @mixin default($propriety) {
-    display: flex;
-    justify-content: $propriety;
+@mixin default($propriety) {
+  display: flex;
+  justify-content: $propriety;
+}
+
+.cards {
+  @include default(space-evenly);
+}
+
+.content {
+  @include default(space-around);
+  padding-top: 25px;
+  .my-history {
+    width: 55%;
+    color: #333;
   }
+}
+h3 {
+  font-size: 28px;
+  font-family: "KoHo";
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+table {
+  max-height: 450px;
+  margin-bottom: 0;
 
-  .cards {
-    @include default(space-evenly)
+  thead {
+    tr {
+      td {
+        text-align: center;
+      }
+    }
   }
-
-  .content {
-    @include default(space-around)
-    padding-top: 25px;
-      .my-history {
-        width: 55%;
-        color: #333;
+  tbody {
+    tr {
+      td:nth-child(1) {
+        font-weight: bolder;
+      }
+      td {
+        text-align: center;
       }
     }
-    h3 {
-      font-size: 28px;
-      font-family: 'KoHo';
-      text-align: left;
-      border-bottom: 1px solid #eee;
-    }
-    table {
-      max-height: 450px;
-      margin-bottom: 0;
-
-      thead {
-        tr {
-          td {
-            text-align: center;
-          }
-        }
+  }
+  tfoot {
+    tr {
+      th {
+        text-align: center;
       }
-      tbody {
-        tr {
-          td:nth-child(1) {
-            font-weight: bolder;
-          }
-          td {
-            text-align: center;
-          }
-        }
-      }
-      tfoot {
-        tr {
-          th {
-            text-align: center;
-          }
-          td {
-            text-align: right;
-          }
-        }
+      td {
+        text-align: right;
       }
     }
-
+  }
+}
 </style>
