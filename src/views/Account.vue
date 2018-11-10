@@ -19,6 +19,7 @@
           <div class="grid-x">
             <div class="cell auto"></div>
             <div class="cell small-3">
+              <i class="fa fa-bell"></i>
               <p class="username"> Olá, Vaccine user! </p>
               <div class="top-image"></div>
               <i class="fa fa-angle-down"></i>
@@ -70,10 +71,10 @@ export default {
           flex-direction: row;
           justify-content: space-evenly;
           align-items: center;
+          color: #fffbf9;
 
           p.username {
             margin: 0;
-            color: #fffbf9;
             font-family: 'KoHo';
           }
 

@@ -15,3 +15,10 @@
   height: 100%;
 }
 </style>
+<script>
+export default {
+  created: function () {
+    document.title = 'Vaccine Card'
+  }
+}
+</script>
