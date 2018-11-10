@@ -17,7 +17,10 @@
             </form>
         </div>
         <div class="map cell auto">
-          <h4> Carregando... Google maps (^-^) </h4>
+          <HereMap
+            lat="-8.84368"
+            lng="13.26907"
+            ></HereMap>
         </div>
       </div>
     </div>
@@ -64,6 +67,14 @@
     color: #fff;
     vertical-align: middle;
     box-sizing: border-box;
-    padding: 190px;
   }
 </style>
+<script>
+import HereMap from '@/components/section/HereMap.vue'
+export default {
+  name: 'Search',
+  components: {
+    HereMap
+  }
+}
+</script>
