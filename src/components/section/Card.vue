@@ -43,6 +43,9 @@ export default {
     }
     .card-section {
       text-align: center;
+      h4, p {
+        font-family: 'KoHo' !important;
+      }
     }
   }
 </style>

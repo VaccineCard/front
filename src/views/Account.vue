@@ -56,7 +56,7 @@ export default {
   }
 
   div.cell-container {
-    background-color: #fffbf9;
+    background-color: #FBFBFF;
 
     div.top-menu {
       height: 55px;
@@ -89,6 +89,7 @@ export default {
 
     div.container {
       padding: 25px;
+      padding-bottom: 0;
       box-sizing: border-box;
     }
   }
