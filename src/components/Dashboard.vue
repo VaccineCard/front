@@ -90,11 +90,11 @@ export default {
     'app-card': Card
   },
   data: function () {
-    return  {
-      cards : [
-        { icon: 'fa-medkit', title: 'Vacinas', qtd: 0, background: '#C7CCDB'},
-        { icon: 'fa-users', title: 'Membros', qtd: 0, background: '#AEC5EB'},
-        { icon: 'fa-paw', title: 'Animais', qtd: 0, background: '#E9AFA3'}
+    return {
+      cards: [
+        { icon: 'fa-medkit', title: 'Vacinas', qtd: 0, background: '#C7CCDB' },
+        { icon: 'fa-users', title: 'Membros', qtd: 0, background: '#AEC5EB' },
+        { icon: 'fa-paw', title: 'Animais', qtd: 0, background: '#E9AFA3' }
       ]
     }
   },
