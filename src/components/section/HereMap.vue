@@ -20,7 +20,9 @@ export default {
   created () {
     this.platform = new H.service.Platform({
       app_id: '1YYJUM43upxVT6IAMoVG',
-      app_code: '70nlMC03RHevarYzsas2EQ'
+      app_code: '70nlMC03RHevarYzsas2EQ',
+      useCIT: true,
+      useHTTPS: true
     })
   },
   mounted () {
