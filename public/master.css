@@ -12,3 +12,6 @@ body {
 .fade-enter, .fade-leave-to{
   opacity: 0;
 }
+.mapboxgl-canvas {
+  position: relative !important;
+}
