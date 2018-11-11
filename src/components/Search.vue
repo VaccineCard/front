@@ -17,10 +17,10 @@
             </form>
         </div>
         <div class="map cell auto">
-          <HereMap
-            lat="-8.84368"
-            lng="13.26907"
-            ></HereMap>
+          <map-box
+            lat="13.363649"
+            long="-8.921360"
+          ></map-box>
         </div>
       </div>
     </div>
@@ -70,11 +70,11 @@
   }
 </style>
 <script>
-import HereMap from '@/components/section/HereMap.vue'
+import MapBox from '@/components/section/MapBox.vue'
 export default {
   name: 'Search',
   components: {
-    HereMap
+    MapBox
   }
 }
 </script>
