@@ -16,11 +16,49 @@
               <button class="button"> Procurar</button>
             </form>
         </div>
-        <div class="map cell auto">
-          <map-box
-            lat="13.363649"
-            long="-8.921360"
-          ></map-box>
+        <div class="list cell auto">
+         <h3> Encontrados { x } registros </h3>
+         <table>
+           <thead>
+             <tr>
+               <th> Nome </th>
+               <th> Localidade </th>
+               <th> Ação </th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <td> Dr. Miguel </td>
+               <td> Viana </td>
+               <td> <button class="button"> Ver no mapa </button> </td>
+             </tr>
+             <tr>
+               <td> Dr. Miguel </td>
+               <td> Viana </td>
+               <td> <button class="button"> Ver no mapa </button> </td>
+             </tr>
+             <tr>
+               <td> Dr. Miguel </td>
+               <td> Viana </td>
+               <td> <button class="button"> Ver no mapa </button> </td>
+             </tr>
+             <tr>
+               <td> Dr. Miguel </td>
+               <td> Viana </td>
+               <td> <button class="button"> Ver no mapa </button> </td>
+             </tr>
+             <tr>
+               <td> Dr. Miguel </td>
+               <td> Viana </td>
+               <td> <button class="button"> Ver no mapa </button> </td>
+             </tr>
+           </tbody>
+           <tfoot>
+             <tr>
+               <td colspan="3"> Paginação </td>
+             </tr>
+           </tfoot>
+         </table>
         </div>
       </div>
     </div>
@@ -34,7 +72,7 @@
     background-color: #fff;
     padding: 25px;
     max-height: 312px;
-    box-shadow: 1px 0px 9px #eee;
+    box-shadow: 1px 0px 9px #dedede;
     text-align: center;
 
     form {
@@ -59,22 +97,54 @@
       }
     }
   }
-  .map {
+  .list {
     margin-left: 12px;
-    background-color: #ddd;
     height: 500px;
     text-align: center;
-    color: #fff;
+    background-color: #fff;
     vertical-align: middle;
     box-sizing: border-box;
+    padding: 15px;
+    box-shadow: 1px 0px 9px #dedede;
+    border-bottom: 6px solid #639fab;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+    table {
+      thead {
+        tr {
+          th {
+            text-align: center;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            .button {
+              margin-bottom: 0;
+              background-color: transparent;
+              color: #0f3b64;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      tfoot {
+        tr {
+          td {
+            text-align: center;
+          }
+        }
+      }
+    }
   }
 </style>
 <script>
-import MapBox from '@/components/section/MapBox.vue'
+// import MapBox from '@/components/section/MapBox.vue'
 export default {
   name: 'Search',
   components: {
-    MapBox
   }
 }
 </script>
