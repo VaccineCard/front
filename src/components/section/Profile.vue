@@ -4,8 +4,8 @@
       <div class="image"></div>
     </div>
     <div class="cell auto">
-      <p> Vaccine user <br />
-      <small>Type account</small></p>
+      <p> {{ name }} <br />
+      <small>{{ typeaccount }}</small></p>
     </div>
   </div>
 </template>
@@ -30,6 +30,10 @@
 </style>
 <script>
 export default {
-  name: 'Profile'
+  name: 'Profile',
+  props: [
+    'name',
+    'typeaccount'
+  ]
 }
 </script>

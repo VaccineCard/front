@@ -1,5 +1,6 @@
 <template>
   <form v-on:submit.prevent="signIn">
+    <div :class="{'spinner': loading}"></div>
     <ul class="steps">
       <li class="step"> Entrando </li>
     </ul>

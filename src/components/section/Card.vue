@@ -1,6 +1,10 @@
 <template lang="html">
   <div>
-    <div class="cell" onloadedmetadata="">
+    <div class="cell">
+       <div class="shield" v-if="data.is_blocked">
+          <i class="fa fa-shield-alt"></i>
+          Conteudo bloqueado
+        </div>
       <div class="card" v-bind:style="{'background-color': data.background}">
         <div class="icon">
           <i class="fa" v-bind:class="data.icon"></i>
@@ -21,6 +25,18 @@ export default {
 </script>
 
 <style lang="scss">
+.cell { position: relative;}
+  .shield {
+    position: absolute;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, .9);
+    padding: 20% 0;
+    font-family: 'KoHo';
+  }
+
   .card {
     display: flex;
     flex-direction: row;

@@ -23,12 +23,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="item of userHistory" v-bind:key="item.id">
-                  <td> {{ item.id }}</td>
-                  <td>{{ item.date }}</td>
-                  <td>{{ item.vacine }}</td>
-                  <td>{{ item.center }}</td>
-                  <td>{{ item.doctor }}</td>
+                <template v-if="user.vaccines.length != 0">
+                  <tr v-for="item of user.vaccines" v-bind:key="item.id">
+                      <td> {{ item.id }}</td>
+                      <td>{{ item.date }}</td>
+                      <td>{{ item.vacine }}</td>
+                      <td>{{ item.center }}</td>
+                      <td>{{ item.doctor }}</td>
+                  </tr>
+                </template>
+                <tr v-else>
+                    <td colspan="5"> Sem nenhuma vacina ...</td>
                 </tr>
               </tbody>
               <tfoot >
@@ -39,8 +44,12 @@
               </tfoot>
             </table>
           </div>
-          <div>
+          <div class="animals">
             <h3> Vacina dos animais </h3>
+            <div class="shield-here">
+              <i class="fa fa-shield-alt"></i>
+              Conteudo bloqueado
+            </div>
             <select class="" name="">
               <option value=""> Dog - Maia </option>
 
@@ -56,22 +65,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>11-02-2009</td>
-                  <td>Tastey</td>
-                  <td>VVV</td>
-                  <td>7.5/10</td>
-                </tr>
-                <tr>
-                  <td>11-02-2009</td>
-                  <td>Delicious</td>
-                  <td>VVV</td>
-                  <td>8/10</td>
-                </tr>
-                <tr>
-                  <td>11-02-2009</td>
-                  <td>Superb</td>
-                  <td>VVV</td>
-                  <td>11/10</td>
+                  <td colspan="4">Nenhum registro</td>
                 </tr>
               </tbody>
             </table>
@@ -90,18 +84,18 @@ export default {
     'app-card': Card
   },
   data: function () {
-    return {
-      cards: [
-        { icon: 'fa-medkit', title: 'Vacinas', qtd: 0, background: '#C7CCDB' },
-        { icon: 'fa-users', title: 'Membros', qtd: 0, background: '#AEC5EB' },
-        { icon: 'fa-paw', title: 'Animais', qtd: 0, background: '#E9AFA3' }
-      ]
-    }
+    return {}
   },
   computed: {
-    userHistory: function () {
-      return this.$store.getters.getUserHistory
-    }
+    user: function () {
+      return this.$store.getters.getUser
+    },
+    cards: function () {
+      return [
+        { icon: 'fa-medkit', title: 'Vacinas', qtd: this.user.vaccines.length, background: '#C7CCDB' },
+        { icon: 'fa-users', title: 'Membros', qtd: this.user.members.length, background: '#AEC5EB' },
+        { icon: 'fa-paw', title: 'Animais', is_blocked: true, qtd: 0, background: '#E9AFA3' }
+    ]}
   }
 }
 </script>
@@ -110,6 +104,18 @@ export default {
 @mixin default($propriety) {
   display: flex;
   justify-content: $propriety;
+}
+
+.shield-here{
+  position: absolute;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, .9);
+  padding: 40% 0;
+  font-size: 16pt;
+  font-family: 'KoHo';
 }
 
 .cards {
@@ -122,6 +128,9 @@ export default {
   .my-history {
     width: 55%;
     color: #333;
+  }
+  div.animals {
+    position: relative;
   }
 }
 h3 {
