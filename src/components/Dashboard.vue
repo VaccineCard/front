@@ -48,7 +48,7 @@
             <h3> Vacina dos animais </h3>
             <div class="shield-here">
               <i class="fa fa-shield-alt"></i>
-              Conteudo bloqueado
+              Conteúdo bloqueado
             </div>
             <select class="" name="">
               <option value=""> Dog - Maia </option>
