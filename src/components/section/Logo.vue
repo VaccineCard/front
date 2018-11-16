@@ -1,8 +1,17 @@
 <template>
   <div class="lgo">
-    <h4> Vaccine <span>Card</span></h4>
+    <h4 v-bind:style="{ 'font-size': size, 'color': color}"> Vaccine <span>Card</span></h4>
   </div>
 </template>
+<script>
+export default {
+  props: [
+    'size',
+    'color'
+  ]
+}
+</script>
+
 <style lang="scss" scoped>
   div.lgo {
     padding: 10px;

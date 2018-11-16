@@ -15,3 +15,33 @@ body {
 .mapboxgl-canvas {
   position: relative !important;
 }
+.spinner:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 60px;
+  width: 60px;
+  margin-top:-30px;
+  margin-left: -30px;
+  border-radius: 50%;
+  border:3px solid lightgray;
+  border-top-color: #0F75BC;
+  animation: spinner .7s linear infinite;
+}
+.spinner{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

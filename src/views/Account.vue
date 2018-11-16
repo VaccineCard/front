@@ -41,6 +41,9 @@ import Menu from '@/components/section/Menu.vue'
 
 export default {
   name: 'Account',
+  created: function () {
+    document.title = 'Vaccine Card :. Minha conta'
+  },
   components: {
     'app-logo': Logo,
     'app-profile': Profile,
