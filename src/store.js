@@ -1,47 +1,45 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-// import api from './api.const'
+import generateApi from './api.const'
+import axios from 'axios'
+
+const token = localStorage.getItem('vaccine-card-token')
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     user: {
-      history: [
-        {
-          id: '#1',
-          date: '11-02-2009',
-          vacine: 'Tastey',
-          center: 'VVV',
-          doctor: 'Alex'
-        },
-        {
-          id: '#2',
-          date: '11-02-2010',
-          vacine: 'Lorem',
-          center: 'VVV',
-          doctor: 'Alex'
-        },
-        {
-          id: '#3',
-          date: '11-02-2012',
-          vacine: 'Lorem',
-          center: 'VVV',
-          doctor: 'Alex'
-        }
-      ]
+      members: [],
+      vaccines: []
     }
   },
   getters: {
-    getUserHistory: function (state) {
-      return state.user.history
+    getUser: function (state) {
+      return state.user
     }
   },
   mutations: {
-
+    addUser: function (state, user) {
+      state.user = {... user, members: [], vaccines: []}
+    },
+    addMembersToUser: function (state, members) {
+      state.user.members = members
+    }
   },
   actions: {
-
+    findUserFamilyMembers: function ({ commit }, user_id) {
+      axios.get(generateApi(`patients/family/${user_id}?token=${token}`)).then(({ data }) => {
+        commit('addMembersToUser', data.members )
+      }).catch(({response}) => {
+        console.log(response)
+      })
+    },
+    logout: function({ state }) {
+      localStorage.removeItem('vaccine-card-token')
+      localStorage.removeItem('vaccine-card-user')
+      state.user = { }
+    }
   }
 })
