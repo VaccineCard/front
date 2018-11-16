@@ -3,7 +3,7 @@
     <div class="cell">
        <div class="shield" v-if="data.is_blocked">
           <i class="fa fa-shield-alt"></i>
-          Conteudo bloqueado
+          Conteúdo bloqueado
         </div>
       <div class="card" v-bind:style="{'background-color': data.background}">
         <div class="icon">
