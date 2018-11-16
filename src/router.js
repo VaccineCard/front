@@ -1,31 +1,58 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Account from './views/Account.vue'
-import Dashboard from './components/Dashboard.vue'
-
+import Auth from './views/Auth.vue'
+import Signin from './components/auth/Signin.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/',
+      name: 'auth',
+      component: Auth,
+      redirect: { name: 'Signin' },
+      beforeEnter: (to, from, next) => {
+        if (
+          localStorage.getItem('vaccine-card-user') &&
+            localStorage.getItem('vaccine-card-token')
+        ) {
+          next({ name: 'account' })
+        }
+        next()
+      },
+      children: [
+        {
+          path: 'signin',
+          component: Signin,
+          name: 'Signin'
+        },
+        {
+          path: 'signup',
+          component: () => import('./components/auth/Signup.vue'),
+          name: 'Signup'
+        }
+      ]
     },
     {
-      path: '/',
+      path: '/account',
       name: 'account',
-      component: Account,
+      beforeEnter: (to, from, next) => {
+        if (
+          !localStorage.getItem('vaccine-card-user') &&
+            !localStorage.getItem('vaccine-card-token')
+        ) {
+          next({ name: 'auth' })
+        }
+        next()
+      },
+      component: () => import('./views/Account.vue'),
       redirect: { name: 'dash' },
       children: [
         {
           name: 'dash',
           path: 'dashboard',
-          component: Dashboard
+          component: () => import('./components/Dashboard.vue')
         },
         {
           name: 'search',
