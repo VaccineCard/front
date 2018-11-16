@@ -15,7 +15,7 @@ export default new Router({
       beforeEnter: (to, from, next) => {
         if (
           localStorage.getItem('vaccine-card-user') &&
-            localStorage.getItem('vaccine-card-token')
+          localStorage.getItem('vaccine-card-token')
         ) {
           next({ name: 'account' })
         }
@@ -25,12 +25,30 @@ export default new Router({
         {
           path: 'signin',
           component: Signin,
-          name: 'Signin'
+          name: 'Signin',
+          beforeEnter: (to, from, next) => {
+            if (
+              localStorage.getItem('vaccine-card-user') &&
+              localStorage.getItem('vaccine-card-token')
+            ) {
+              next({ name: 'account' })
+            }
+            next()
+          }
         },
         {
           path: 'signup',
           component: () => import('./components/auth/Signup.vue'),
-          name: 'Signup'
+          name: 'Signup',
+          beforeEnter: (to, from, next) => {
+            if (
+              localStorage.getItem('vaccine-card-user') &&
+              localStorage.getItem('vaccine-card-token')
+            ) {
+              next({ name: 'account' })
+            }
+            next()
+          }
         }
       ]
     },
@@ -40,7 +58,7 @@ export default new Router({
       beforeEnter: (to, from, next) => {
         if (
           !localStorage.getItem('vaccine-card-user') &&
-            !localStorage.getItem('vaccine-card-token')
+          !localStorage.getItem('vaccine-card-token')
         ) {
           next({ name: 'auth' })
         }
@@ -52,27 +70,72 @@ export default new Router({
         {
           name: 'dash',
           path: 'dashboard',
-          component: () => import('./components/Dashboard.vue')
+          component: () => import('./components/Dashboard.vue'),
+          beforeEnter: (to, from, next) => {
+            if (
+              !localStorage.getItem('vaccine-card-user') &&
+              !localStorage.getItem('vaccine-card-token')
+            ) {
+              next({ name: 'auth' })
+            }
+            next()
+          }
         },
         {
           name: 'search',
           path: 'search',
-          component: () => import('./components/Search.vue')
+          component: () => import('./components/Search.vue'),
+          beforeEnter: (to, from, next) => {
+            if (
+              !localStorage.getItem('vaccine-card-user') &&
+              !localStorage.getItem('vaccine-card-token')
+            ) {
+              next({ name: 'auth' })
+            }
+            next()
+          }
         },
         {
           name: 'family',
           path: 'family',
-          component: () => import('./components/Family.vue')
+          component: () => import('./components/Family.vue'),
+          beforeEnter: (to, from, next) => {
+            if (
+              !localStorage.getItem('vaccine-card-user') &&
+              !localStorage.getItem('vaccine-card-token')
+            ) {
+              next({ name: 'auth' })
+            }
+            next()
+          }
         },
         {
           name: 'doctors',
           path: 'doctors',
-          component: () => import('./components/Doctors.vue')
+          component: () => import('./components/Doctors.vue'),
+          beforeEnter: (to, from, next) => {
+            if (
+              !localStorage.getItem('vaccine-card-user') &&
+              !localStorage.getItem('vaccine-card-token')
+            ) {
+              next({ name: 'auth' })
+            }
+            next()
+          }
         },
         {
           name: 'setting',
           path: 'setting',
-          component: () => import('./components/Setting.vue')
+          component: () => import('./components/Setting.vue'),
+          beforeEnter: (to, from, next) => {
+            if (
+              !localStorage.getItem('vaccine-card-user') &&
+              !localStorage.getItem('vaccine-card-token')
+            ) {
+              next({ name: 'auth' })
+            }
+            next()
+          }
         }
       ]
     }
