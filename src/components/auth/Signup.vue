@@ -81,7 +81,7 @@
               minlength="6" required>
           </label>
         </div>
-
+  <router-link :to="{ name: 'Sigin' }">Já tenho uma conta</router-link>
         <div class="foot">
           <button class="button" type="button" v-if="!(op == 3)" v-on:click="changeStep(1)"> Avançar </button>
           <button class="button" type="submit" v-if="(op == 3)" > Finalizar </button>
