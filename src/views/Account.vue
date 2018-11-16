@@ -145,7 +145,7 @@ export default {
         box-shadow: 1px 1px 9px #ccc;
         border-bottom-right-radius: 12px;
         border-bottom-left-radius: 12px;
-
+        z-index: 3;
         ul {
           margin: 0;
           li {
