@@ -200,8 +200,8 @@ export default {
         )
         .then(({ data }) => {
           if (data.centers.length === 0) {
-            this.$refs.listTitle.innerHTML = 'Não consegui encontrar ;-('
-            this.$refs.listBody.innerHTML = 'Lamentamos por ainda não termos centros para o ajudar, vamos adicionar mais centros o mais breve possível :-)'
+            this.$refs.listTitle.innerHTML = 'Não consegui encontrar 😔'
+            this.$refs.listBody.innerHTML = 'Lamentamos por ainda não termos centros para o ajudar, vamos adicionar mais centros o mais breve possível 🙂'
           } else {
             this.$refs.listTitle.innerHTML = `Encontramos ${data.centers.length} para você`
             this.centers = data.centers
@@ -232,7 +232,7 @@ export default {
     },
     openMap: function (lat, long) {
       this.map = true
-      this.lat = lat,
+      this.lat = lat
       this.long = long
     },
     closeMap: function () {
