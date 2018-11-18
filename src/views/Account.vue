@@ -29,10 +29,10 @@
           </div>
           <div class="menu" v-if="toogleMenu">
             <ul>
-              <li> 
+              <li>
                 <button class="button">Definições</button>
               </li>
-              <li> 
+              <li>
                 <button v-on:click="logout()" class="button">Logout</button>
               </li>
             </ul>
@@ -62,7 +62,7 @@ export default {
     return {
       toogleMenu: false
     }
-  }, 
+  },
   components: {
     'app-logo': Logo,
     'app-profile': Profile,
