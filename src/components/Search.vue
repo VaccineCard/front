@@ -10,7 +10,7 @@
                 <select name="vaccines" v-model="search.vaccine_id">
                   <option v-for="vaccine of vaccines"
                           v-bind:key="vaccine.id"
-                          v-bind:value="vaccine.id"> 
+                          v-bind:value="vaccine.id">
                           {{ vaccine.name }}
                     </option>
                 </select>
@@ -25,10 +25,14 @@
         </div>
         <div class="list cell auto">
          <h3 ref="listTitle"> Esperando pesquisa </h3>
-         <div class="waiting" v-if="centers.length == 0">
-           <h5 ref="listBody"> Preencha primeiro os campos </h5>
-         </div>
-         <table v-else>
+          <div class="map" v-if="map">
+            <buttton class="button" v-on:click="closeMap()"> <i class="fa fa-arrow-left"></i> Voltar </buttton>
+            <map-box :lat="lat" :long="long"></map-box>
+          </div>
+          <div class="waiting" v-else-if="centers.length == 0">
+            <h5 ref="listBody"> Preencha primeiro os campos </h5>
+          </div>
+          <table v-else>
            <thead>
              <tr>
                <th> Nome </th>
@@ -40,7 +44,7 @@
              <tr v-for="(center, index) in centers" v-bind:key="index">
                <td> {{ center.name }} </td>
                <td> {{ center.state_id }} </td>
-               <td> <button class="button"> Ver no mapa </button> </td>
+               <td> <button class="button" v-on:click="openMap(center.latitude, center.longitude)"> Ver no mapa </button> </td>
              </tr>
            </tbody>
            <tfoot>
@@ -48,7 +52,7 @@
                <td colspan="3"> Paginação </td>
              </tr>
            </tfoot>
-         </table>
+          </table>
         </div>
       </div>
     </div>
@@ -144,31 +148,48 @@
     }
   }
 }
+.map {
+  box-sizing: border-box;
+  height: 78%;
+  text-align: left;
+
+  .button {
+    margin-bottom: 0;
+    background-color: transparent;
+    color: #0f3b64;
+    cursor: pointer;
+  }
+}
 </style>
 <script>
-// import MapBox from '@/components/section/MapBox.vue'
-import generateApi from "@/api.const";
+import MapBox from '@/components/section/MapBox.vue'
+import generateApi from '@/api.const'
 export default {
-  name: "Search",
-  components: {},
-  data: function() {
+  name: 'Search',
+  components: {
+    MapBox
+  },
+  data: function () {
     return {
       search: {
-        vaccine_id: "",
-        category: ""
+        vaccine_id: '',
+        category: ''
       },
       centers: [],
-      vaccines: [{ id: "", name: "" }],
-      loading: false
-    };
+      vaccines: [{ id: '', name: '' }],
+      loading: false,
+      lat: '2.5695',
+      long: '-8.658',
+      map: false
+    }
   },
-  mounted: function() {
-    this.getAllVaccines();
+  mounted: function () {
+    this.getAllVaccines()
   },
   methods: {
-    searchVaccines: function() {
+    searchVaccines: function () {
       this.loading = true
-      const token = localStorage.getItem("vaccine-card-token");
+      const token = localStorage.getItem('vaccine-card-token')
       this.$http
         .get(
           generateApi(
@@ -178,38 +199,47 @@ export default {
           )
         )
         .then(({ data }) => {
-          if(data.centers.length == 0) {
-            this.$refs.listTitle.innerHTML = "Não consegui encontrar ;-("
-            this.$refs.listBody.innerHTML = "Lamentamos por ainda não termos centros para o ajudar, vamos adicionar mais centros o mais breve possível :-)"
+          if (!(data.centers.length === 0)) {
+            this.$refs.listTitle.innerHTML = 'Não consegui encontrar ;-('
+            this.$refs.listBody.innerHTML = 'Lamentamos por ainda não termos centros para o ajudar, vamos adicionar mais centros o mais breve possível :-)'
           } else {
             this.$refs.listTitle.innerHTML = `Encontramos ${data.centers.length} para você`
-            this.centers = data.centers
+              this.centers = [
+                  { name: 'SSS', state_id: 'Op', longitude: '-5.265485', latitude: '9.25654876' }
+              ]
           }
-
           this.loading = false
         })
-        .catch (_ => {
+        .catch(_ => {
           this.loading = false
-        });
+        })
     },
-    getAllVaccines: function() {
+    getAllVaccines: function () {
       this.loading = true
-      const token = localStorage.getItem("vaccine-card-token");
+      const token = localStorage.getItem('vaccine-card-token')
       this.$http
         .get(generateApi(`vaccines?token=${token}`))
         .then(({ data }) => {
-          if (!data.vaccines.length == 0) {
-            this.vaccines = data.vaccines;
+          if (!(data.vaccines.length === 0)) {
+            this.vaccines = data.vaccines
           } else {
-            this.vaccines = [{ name: "Sem vacinas no momento ", id: 0 }];
+            this.vaccines = [{ name: 'Sem vacinas no momento ', id: 0 }]
           }
 
           this.loading = false
         })
-        .catch (_ => {
+        .catch(_ => {
           this.loading = false
-        });
+        })
+    },
+    openMap: function (lat, long) {
+      this.map = true
+      this.lat = lat,
+      this.long = long
+    },
+    closeMap: function () {
+      this.map = false
     }
   }
-};
+}
 </script>
