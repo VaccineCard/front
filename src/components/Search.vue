@@ -199,14 +199,12 @@ export default {
           )
         )
         .then(({ data }) => {
-          if (!(data.centers.length === 0)) {
+          if (data.centers.length === 0) {
             this.$refs.listTitle.innerHTML = 'Não consegui encontrar ;-('
             this.$refs.listBody.innerHTML = 'Lamentamos por ainda não termos centros para o ajudar, vamos adicionar mais centros o mais breve possível :-)'
           } else {
             this.$refs.listTitle.innerHTML = `Encontramos ${data.centers.length} para você`
-              this.centers = [
-                  { name: 'SSS', state_id: 'Op', longitude: '-5.265485', latitude: '9.25654876' }
-              ]
+            this.centers = data.centers
           }
           this.loading = false
         })
