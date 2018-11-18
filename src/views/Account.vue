@@ -6,9 +6,9 @@
           <app-logo></app-logo>
           <app-profile :name="user.name" :typeaccount="'Paciente'"></app-profile>
           <div class="alt">
-            <button class="button">
-               <i class="fa fa-plus" />
-               Adicionar membro
+            <button class="button" v-on:click="toogleAddMamber">
+              <i class="fa fa-plus" />
+              Adicionar membro
             </button>
           </div>
           <app-menu></app-menu>
@@ -40,6 +40,7 @@
         </div>
         <div class="container">
           <router-view></router-view>
+          <app-add-family-member v-if="showMemberPanel"></app-add-family-member>
         </div>
       </div>
     </div>
@@ -50,6 +51,7 @@
 import Logo from '@/components/section/Logo.vue'
 import Profile from '@/components/section/Profile.vue'
 import Menu from '@/components/section/Menu.vue'
+import AddFamilyMember from '@/components/section/AddFamilyMember.vue'
 
 export default {
   name: 'Account',
@@ -60,13 +62,15 @@ export default {
   },
   data: function () {
     return {
-      toogleMenu: false
+      toogleMenu: false,
+      showMemberPanel: false
     }
   },
   components: {
     'app-logo': Logo,
     'app-profile': Profile,
-    'app-menu': Menu
+    'app-menu': Menu,
+    'app-add-family-member': AddFamilyMember
   },
   methods: {
     getMyFamilyMembers: function (id) {
@@ -78,6 +82,9 @@ export default {
     logout: function () {
       this.$store.dispatch('logout')
       this.$router.push({ name: 'auth' })
+    },
+    toogleAddMamber () {
+      this.showMemberPanel = !this.showMemberPanel
     }
   },
   computed: {
@@ -192,6 +199,7 @@ export default {
       div.alt {
         text-align: center;
         font-family: 'KoHo';
+
         button {
           border-radius: 6px;
           background-color: #1c5d99;
