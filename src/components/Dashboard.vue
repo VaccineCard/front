@@ -95,7 +95,8 @@ export default {
         { icon: 'fa-medkit', title: 'Vacinas', qtd: this.user.vaccines.length, background: '#C7CCDB' },
         { icon: 'fa-users', title: 'Membros', qtd: this.user.members.length, background: '#AEC5EB' },
         { icon: 'fa-paw', title: 'Animais', is_blocked: true, qtd: 0, background: '#E9AFA3' }
-    ]}
+      ]
+    }
   }
 }
 </script>
