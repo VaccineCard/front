@@ -24,10 +24,10 @@
                 <span>Conteúdo bloqueado</span>
               </div>
               <div class="details">
-               <label for=""> Nome: {{ userInfo.name }} </label> 
-               <label for=""> Ultima vacina tomada: {{ userInfo.name }} </label> 
-               <label for=""> Grau de parentesco: {{ userInfo.name }} </label> 
-               <label for=""> Criou a conta há: {{ userInfo.name }} </label> 
+               <label for=""> Nome: {{ userInfo.name }} </label>
+               <label for=""> Ultima vacina tomada: {{ userInfo.name }} </label>
+               <label for=""> Grau de parentesco: {{ userInfo.name }} </label>
+               <label for=""> Criou a conta há: {{ userInfo.name }} </label>
               </div>
             </div>
             <div class="cell auto vaccines">
@@ -183,10 +183,10 @@ export default {
       this.$http.get(generateApi(`patients/${id}?token=${token}`)).then(({ data }) => {
         this.userInfo = data.user
       })
-      .catch(({ response }) => {
+        .catch(({ response }) => {
         // eslint-ignore-next-line
-        console.log( response )
-      })
+          console.log(response)
+        })
     }
   }
 }
