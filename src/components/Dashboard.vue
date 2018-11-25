@@ -45,7 +45,7 @@
             </table>
           </div>
           <div class="calendars">
-            <h3> Mini calendário </h3>
+            <h3> Proximas vacinas </h3>
               <p> Somente um exemplo de como ficará</p>
               <v-calendar :attributes='attrs'>
               </v-calendar>
