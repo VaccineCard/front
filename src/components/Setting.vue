@@ -112,7 +112,7 @@
   }
 </style>
 <script>
-import generateApi from '@/api.const'
+// import generateApi from '@/api.const'
 
 export default {
   name: 'Settings',

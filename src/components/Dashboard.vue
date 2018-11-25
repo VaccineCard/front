@@ -44,31 +44,11 @@
               </tfoot>
             </table>
           </div>
-          <div class="animals">
-            <h3> Vacina dos animais </h3>
-            <div class="shield-here">
-              <i class="fa fa-shield-alt"></i>
-              Conteúdo bloqueado
-            </div>
-            <select class="" name="">
-              <option value=""> Dog - Maia </option>
-
-            </select>
-            <table class="stack unstriped">
-              <thead>
-                <tr>
-                  <td>Data</td>
-                  <td>Nome</td>
-                  <td>Centro</td>
-                  <td>Doutor</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td colspan="4">Nenhum registro</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="calendars">
+            <h3> Mini calendário </h3>
+              <p> Somente um exemplo de como ficará</p>
+              <v-calendar :attributes='attrs'>
+              </v-calendar>
           </div>
         </div>
       </div>
@@ -84,7 +64,21 @@ export default {
     'app-card': Card
   },
   data: function () {
-    return {}
+    return {
+      attrs: [
+        {
+          key: 'today',
+          dates: new Date(),
+          highlight: {
+            backgroundColor: '#ff8080'
+            // Other properties are available too, like `height` & `borderRadius`
+          },
+          contentStyle: {
+            color: '#fafafa'
+          }
+        }
+      ]
+    }
   },
   computed: {
     user: function () {
@@ -92,9 +86,18 @@ export default {
     },
     cards: function () {
       return [
-        { icon: 'fa-medkit', title: 'Vacinas', qtd: this.user.vaccines.length, background: '#C7CCDB' },
-        { icon: 'fa-users', title: 'Membros', qtd: this.user.members.length, background: '#AEC5EB' },
-        { icon: 'fa-paw', title: 'Animais', is_blocked: true, qtd: 0, background: '#E9AFA3' }
+        {
+          icon: 'fa-medkit',
+          title: 'Vacinas',
+          qtd: this.user.vaccines.length,
+          background: '#C7CCDB'
+        },
+        {
+          icon: 'fa-users',
+          title: 'Membros',
+          qtd: this.user.members.length,
+          background: '#AEC5EB'
+        }
       ]
     }
   }
@@ -105,18 +108,6 @@ export default {
 @mixin default($propriety) {
   display: flex;
   justify-content: $propriety;
-}
-
-.shield-here{
-  position: absolute;
-  height: 100%;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, .9);
-  padding: 40% 0;
-  font-size: 16pt;
-  font-family: 'KoHo';
 }
 
 .cards {
@@ -130,13 +121,13 @@ export default {
     width: 55%;
     color: #333;
   }
-  div.animals {
+  div.calendars {
     position: relative;
   }
 }
 h3 {
   font-size: 28px;
-  font-family: "KoHo";
+  font-family: 'KoHo';
   text-align: left;
   border-bottom: 1px solid #eee;
 }

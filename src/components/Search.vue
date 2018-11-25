@@ -17,8 +17,8 @@
               </label>
               <div>
                 Para quem é essa vacina?
-                <label><input type="radio" name="nameVacine" v-model="search.category" value="Human" checked> Humano</label>
-                <label><input type="radio" name="nameVacine" v-model="search.category" value="Animal" disabled> Animal (Bloqueada) </label>
+                <label><input type="radio" name="nameVacine" v-model="search.category" value="Human" checked> Adultos</label>
+                <label><input type="radio" name="nameVacine" v-model="search.category" value="Animal"> Crianças </label>
               </div>
               <button class="button" > Procurar</button>
             </form>

@@ -35,7 +35,6 @@
       position: fixed;
       left: 84px;
       top: 6pc;
-      border-radius: 12px;
       border-top: 3px solid #fffbf9;
       border-bottom: 3px solid #fffbf9;
       box-shadow: 1px 1px 9px rgba(51, 0, 0, .4);
