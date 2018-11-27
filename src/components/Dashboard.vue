@@ -71,7 +71,6 @@ export default {
           dates: new Date(),
           highlight: {
             backgroundColor: '#ff8080'
-            // Other properties are available too, like `height` & `borderRadius`
           },
           contentStyle: {
             color: '#fafafa'

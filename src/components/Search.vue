@@ -1,57 +1,66 @@
 <template>
   <transition name="fade">
     <div class="grid-container">
-    <div :class="{'spinner': loading}"></div>
+      <div :class="{'spinner': loading}"></div>
       <div class="grid-x">
         <div class="search-mechanism cell small-3">
-            <form v-on:submit.prevent="searchVaccines">
-              <h4> Qual vacina procura? </h4>
-              <label for="search">
-                <select name="vaccines" v-model="search.vaccine_id">
-                  <option v-for="vaccine of vaccines"
-                          v-bind:key="vaccine.id"
-                          v-bind:value="vaccine.id">
-                          {{ vaccine.name }}
-                    </option>
-                </select>
-              </label>
-              <div>
-                Para quem é essa vacina?
-                <label><input type="radio" name="nameVacine" v-model="search.category" value="Human" checked> Adultos</label>
-                <label><input type="radio" name="nameVacine" v-model="search.category" value="Animal"> Crianças </label>
-              </div>
-              <button class="button" > Procurar</button>
-            </form>
+          <form v-on:submit.prevent="searchVaccines">
+            <div>
+              <h4>  Para quem é essa vacina?</h4>            
+              <select name="vaccines" v-model="search.category" v-on:change="getVaccineByCategory">
+                <option value="Child">Crianças</option>
+                <option value="Adult">Adultos</option>
+              </select>
+            </div>
+            <label for="search">
+              <h5 style="font-family:'KoHo'"> Qual vacina procura?</h5>
+              <select v-bind:disabled="!vaccine_status" name="vaccines" v-model="search.vaccine_id">
+                <option
+                  v-for="vaccine of vaccines"
+                  v-bind:key="vaccine.id"
+                  v-bind:value="vaccine.id"
+                >{{ vaccine.name }}</option>
+              </select>
+            </label>
+            <button class="button">Procurar</button>
+          </form>
         </div>
         <div class="list cell auto">
-         <h3 ref="listTitle"> Esperando pesquisa </h3>
+          <h3 ref="listTitle">Esperando pesquisa</h3>
           <div class="map" v-if="map">
-            <buttton class="button" v-on:click="closeMap()"> <i class="fa fa-arrow-left"></i> Voltar </buttton>
+            <buttton class="button" v-on:click="closeMap()">
+              <i class="fa fa-arrow-left"></i> Voltar
+            </buttton>
             <map-box :lat="lat" :long="long"></map-box>
           </div>
           <div class="waiting" v-else-if="centers.length == 0">
-            <h5 ref="listBody"> Preencha primeiro os campos </h5>
+            <h5 ref="listBody">Preencha primeiro os campos</h5>
           </div>
           <table v-else>
-           <thead>
-             <tr>
-               <th> Nome </th>
-               <th> Localidade </th>
-               <th> Ação </th>
-             </tr>
-           </thead>
-           <tbody>
-             <tr v-for="(center, index) in centers" v-bind:key="index">
-               <td> {{ center.name }} </td>
-               <td> {{ center.state_id }} </td>
-               <td> <button class="button" v-on:click="openMap(center.latitude, center.longitude)"> Ver no mapa </button> </td>
-             </tr>
-           </tbody>
-           <tfoot>
-             <tr>
-               <td colspan="3"> Paginação </td>
-             </tr>
-           </tfoot>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Localidade</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(center, index) in centers" v-bind:key="index">
+                <td>{{ center.name }}</td>
+                <td>{{ center.state_id }}</td>
+                <td>
+                  <button
+                    class="button"
+                    v-on:click="openMap(center.latitude, center.longitude)"
+                  >Ver no mapa</button>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">Paginação</td>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>
@@ -71,7 +80,7 @@
 
   form {
     h4 {
-      font-family: "KoHo";
+      font-family: 'KoHo';
     }
     div {
       display: block;
@@ -105,7 +114,7 @@
   border-bottom-right-radius: 12px;
 
   h3 {
-    font-family: "KoHo";
+    font-family: 'KoHo';
   }
 
   .waiting {
@@ -114,7 +123,7 @@
     padding-top: 23%;
 
     h5 {
-      font-family: "KoHo";
+      font-family: 'KoHo';
       color: #639fab;
     }
   }
@@ -177,14 +186,12 @@ export default {
       },
       centers: [],
       vaccines: [{ id: '', name: '' }],
+      vaccine_status: false,
       loading: false,
       lat: '2.5695',
       long: '-8.658',
       map: false
     }
-  },
-  mounted: function () {
-    this.getAllVaccines()
   },
   methods: {
     searchVaccines: function () {
@@ -201,9 +208,12 @@ export default {
         .then(({ data }) => {
           if (data.centers.length === 0) {
             this.$refs.listTitle.innerHTML = 'Não consegui encontrar 😔'
-            this.$refs.listBody.innerHTML = 'Lamentamos por ainda não termos centros para o ajudar, vamos adicionar mais centros o mais breve possível 🙂'
+            this.$refs.listBody.innerHTML =
+              'Lamentamos por ainda não termos centros para o ajudar, vamos adicionar mais centros o mais breve possível 🙂'
           } else {
-            this.$refs.listTitle.innerHTML = `Encontramos ${data.centers.length} para você`
+            this.$refs.listTitle.innerHTML = `Encontramos ${
+              data.centers.length
+            } para você`
             this.centers = data.centers
           }
           this.loading = false
@@ -212,11 +222,11 @@ export default {
           this.loading = false
         })
     },
-    getAllVaccines: function () {
+    getVaccineByCategory: function () {
       this.loading = true
       const token = localStorage.getItem('vaccine-card-token')
       this.$http
-        .get(generateApi(`vaccines?token=${token}`))
+        .get(generateApi(`vaccines/${this.search.category}?token=${token}`))
         .then(({ data }) => {
           if (!(data.vaccines.length === 0)) {
             this.vaccines = data.vaccines
@@ -225,6 +235,7 @@ export default {
           }
 
           this.loading = false
+          this.vaccine_status = true
         })
         .catch(_ => {
           this.loading = false
