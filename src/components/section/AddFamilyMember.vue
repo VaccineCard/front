@@ -1,11 +1,12 @@
 <template>
   <transition name="slide-fade">
     <div class="family_form">
-      <form action="">
+      <app-add-parent v-if="showParent"></app-add-parent>
+      <form action="" v-else>
         <div class="step-1">
           <h4> Quem deseja adicionar </h4>
-          <button class="button">Criança</button>
-          <button class="button">Adulto</button>
+          <router-link v-bind:to="{ name: 'addChild' }" class="button">Criança</router-link>
+          <button v-on:click="changeShowParentState()" class="button">Adulto</button>
         </div>
       </form>
     </div>
@@ -41,16 +42,21 @@
   }
 </style>
 <script>
+import AddParent from '../family/addParent'
+
 export default {
   name: 'AddFamilyMember',
+  components: {
+    'app-add-parent': AddParent
+  },
   data: function () {
     return {
-      children: {
-
-      },
-      adult: {
-
-      }
+      showParent: false
+    }
+  },
+  methods: {
+    changeShowParentState: function () {
+      this.showParent = !this.showParent
     }
   }
 }

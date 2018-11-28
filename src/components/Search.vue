@@ -6,7 +6,7 @@
         <div class="search-mechanism cell small-3">
           <form v-on:submit.prevent="searchVaccines">
             <div>
-              <h4>  Para quem é essa vacina?</h4>            
+              <h4>  Para quem é essa vacina?</h4>
               <select name="vaccines" v-model="search.category" v-on:change="getVaccineByCategory">
                 <option value="Child">Crianças</option>
                 <option value="Adult">Adultos</option>

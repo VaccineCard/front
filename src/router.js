@@ -136,6 +136,11 @@ export default new Router({
             }
             next()
           }
+        },
+        {
+          path: 'family/add/child',
+          name: 'addChild',
+          component: () => import('./components/family/addChild.vue')
         }
       ]
     }
