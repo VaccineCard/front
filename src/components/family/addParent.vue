@@ -13,6 +13,11 @@
 <script type="javascript">
 export default {
   name: 'AddChild',
+  methods: {
+      goToPreviusComponent: function () {
+          this.$emit
+      }
+  },
   computed: {
     user: function () {
       return this.$store.getters.getUser
