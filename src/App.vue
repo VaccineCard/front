@@ -8,11 +8,19 @@
 @font-face {
   font-family: KoHo;
   src: url(assets/fonts/KoHo/KoHo-Medium.ttf);
-  font-weight: bolder;
+  font-weight: 900;
 }
 
 #app {
   height: 100%;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+*{
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 </style>
 <script>

@@ -1,26 +1,25 @@
 <template>
   <form v-on:submit.prevent="signIn">
     <div :class="{'spinner': loading}"></div>
-    <ul class="steps">
-      <li class="step"> Entrando </li>
-    </ul>
 
     <div class="fields">
       <p v-if="error.has" style="color:#900707; text-align:center; background-color: #f88">{{ error.msg }}</p>
       <label for="username">
-        Correio Electrónico: <br />
-        <input type="email" id="username" placeholder="paciente@vaccinecard.com" v-model="user.email" required>
+        E-mail:
       </label>
+      <input type="email" id="username" placeholder="utente@vaccinecard.com" v-model="user.email" required>
+
       <label for="password">
-        Palavra-Passe: <br />
-        <input type="password" id="password" placeholder="Minha senha ..." v-model="user.password" minlength="6" required>
+        Password:
       </label>
-      <div class="foot grid-x">
-        <div>
-          <label for="remeber">
-            <input type="checkbox" name="remeber" id="remember"> Manter conectado
+      <input type="password" id="password" placeholder="Minha senha super segura ..." v-model="user.password" minlength="6" required>
+
+      <div class="foot grid-x flex-dir-column-reverse ">
+        <div class="cell grid-x">
+          <label class="cell small-6  text-left grid-x align-left align-middle" for="remember">
+            <input type="checkbox" name="remember" class="no-margin" id="remember"> Manter conectado
           </label>
-          <router-link :to="{ name: 'Signup' }">Criar nova conta</router-link>
+          <router-link class="cell small-6 text-right" :to="{ name: 'Signup' }">Criar nova conta</router-link>
         </div>
         <button class="button"> Entrar</button>
       </div>
@@ -29,50 +28,31 @@
 </template>
 <style lang="scss" scoped>
   form {
-      ul.steps {
-        margin: 0;
-        padding: 0;
-        border:1px solid #ddd;
-        width: 100%;
-        position: relative;
-        li.step {
-            background-color: #639fab;
-            list-style: none;
-            position: absolute;
-            padding: 5px;
-            color: #f0f0f0;
-            font-family: 'KoHo';
-            border-radius: 12px;
-            top: -19px;
-            left: 40%;
-      }
-    }
-
     div.fields {
-      margin-top: 3em;
+      margin-top: 2em;
       position: relative;
 
       div.foot{
         margin-top: 2em;
-
         div {
-          label {
-            input {
+          input {
             margin-top: 2px;
-            }
-          }
-          a {
-            margin-left: 24px;
           }
         }
        .button {
-        position: absolute;
-        right: 10px;
-        padding: 10px 3em;
-        margin-top: 10px;
+          position: relative;
+          display: block;
+          width: 100%;
+          border-radius: 12px;
+          font-size: 16px;
+         font-family: 'KoHo', sans-serif;
         }
       }
     }
+  }
+  label {
+    color: #fff;
+    margin-bottom: 3px;
   }
 </style>
 <script>

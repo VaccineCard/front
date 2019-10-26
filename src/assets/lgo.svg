@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate"
+     viewBox="0 0 560 315" width="560pt" height="315pt">
+    <defs>
+        <clipPath id="_clipPath_BhVnEQMPvBdyT1jgeiffLFj4lalHmE2i">
+            <rect width="560" height="315"/>
+        </clipPath>
+    </defs>
+    <g clip-path="url(#_clipPath_BhVnEQMPvBdyT1jgeiffLFj4lalHmE2i)">
+        <path d=" M 292.098 12.803 C 375.491 12.803 443.197 80.509 443.197 163.902 C 443.197 247.294 375.491 315 292.098 315 C 208.706 315 141 247.294 141 163.902 C 141 80.509 208.706 12.803 292.098 12.803 Z  M 292.098 25.066 C 367.726 25.066 429.131 87.278 429.131 163.902 C 429.131 240.531 367.726 302.737 292.098 302.743 C 216.47 302.743 155.066 240.531 155.066 163.902 C 155.066 87.278 216.47 25.066 292.098 25.066 Z  M 292.098 34.251 C 363.653 34.251 421.749 92.347 421.749 163.902 C 421.749 235.456 363.653 293.552 292.098 293.552 C 220.544 293.552 162.448 235.456 162.448 163.902 C 162.448 92.347 220.544 34.251 292.098 34.251 Z "
+              fill-rule="evenodd" fill="#639fab"/>
+        <text transform="matrix(2.767,0,0,2.767,226.117,203.255)"
+              style="font-family:'KoHo';font-weight:700;font-size:36px;font-style:normal;fill:#373737;stroke:none;">VC
+        </text>
+    </g>
+</svg>
