@@ -1,26 +1,29 @@
-# Vaccine-front
+# Vaccine Card
+
+Front-end para o Vaccine Card feito com Vuejs + Foundation.css
+
 
 ## Project setup
 ```
-npm install
+yarn
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+yarn serve
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
+yarn build
 ```
 
 ### Run your tests
 ```
-npm run test
+yarn test
 ```
 
 ### Lints and fixes files
 ```
-npm run lint
+yarn lint
 ```
