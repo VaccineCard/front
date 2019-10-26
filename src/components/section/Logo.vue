@@ -14,7 +14,6 @@ export default {
 
 <style lang="scss" scoped>
   div.lgo {
-    padding: 10px;
     align-items: center;
 
     h4 {
